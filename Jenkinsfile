@@ -19,7 +19,10 @@ pipeline {
              echo 'test'
                 snDevOpsStep()
              sleep 2
-                sh 'mvn test -Dpublish'
+                sh 'mvn clean test -Dtest="unittests.*" -Dpublish'
+                junit '**/target/surefire-reports/*.xml'
+             sleep 2
+                sh 'mvn clean test -Dtest="ppmtests.*" -Dpublish'
                 junit '**/target/surefire-reports/*.xml'
            }
        }
