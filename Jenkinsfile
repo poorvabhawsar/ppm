@@ -24,9 +24,6 @@ pipeline {
              sleep 2
                 sh 'mvn clean test -Dtest="ppmtests.*" -Dpublish'
                 junit '**/target/surefire-reports/*.xml'
-             sleep 2
-                sh 'mvn clean test'
-                step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
            }
        }
       stage("deploy") {
