@@ -1,0 +1,24 @@
+pipeline {
+  agent any
+  tools {
+    maven "Maven"
+  }
+  stages {
+      stage("build") {
+          steps {
+            echo 'build...'
+              snDevOpsStep()
+            sleep 2
+          }
+      }
+      stage("deploy") {
+          steps {
+            echo 'Deploying..'
+            snDevOpsStep()
+          	//snDevOpsPackage(name: "devops_pipeline_demo", artifactsPayload: """{"artifacts": [{"name": "devops_pipeline_demo.jar","version": "1.2","semanticVersion": "1.2.0","repositoryName": "devops_pipeline_demo"}]}""")            
+            sleep 2
+            snDevOpsChange()
+          }
+      }
+  }
+}
