@@ -1,6 +1,7 @@
 public class Source {
 
 	String someMethod(String val) {
+		// Test commit 1
 		if(val == null)
 			return null;
 
